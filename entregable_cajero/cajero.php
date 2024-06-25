@@ -8,7 +8,7 @@ while (True){
     print("Opcion 3 para retirar dinero"."\n");
     print("Opcion 4 para salir"."\n");
 
-    $op=(readline("¿Que desea hacer?" ));
+    $op=(readline("¿Que desea hacer?: "  ));
 
     if($op==1){
 
@@ -16,40 +16,41 @@ while (True){
             $ingreso=$ingre;
             echo "Su saldo inicial es de $ingreso"."\n";
             return $ingreso;
-           
     }
     consultarSaldo($ingre);
     }
 
     elseif($op==2){
-        function consignar (){
+        function consignar ($ingre){
             $nuevo= intval(readline("Ingrese el monto que desea consignar: "));
-            echo "Ha consignado $nuevo en su cuenta "."\n";
+            $sum=$ingre+$nuevo;
+            echo "Ha consignado $nuevo en su cuenta "."\n"."Su saldo total es de $sum"."\n";
             return $nuevo;
         }
-        consignar();
+        consignar($ingre);
     }
 
     if($op==3){
 
-        function retirar(){
+        function retirar($ingre,$reti){
             $retiro=intval(readline("¿cuanto dinero desea retirar?: "));
-            if($retiro>$ingre){
-                echo "no tiene monto suficiente"."\n";
 
-            }
+                if($retiro>$ingre){
+                    $reti=$retiro-$ingre;
+                    echo "Su retiro ha sido exitoso, su saldo es de $reti";
             
+            }
+            return $reti;
             return $retiro;
-        }
-        retirar();
-
     }
+    retirar($ingre,$retiro);
 
     if($op==4){
         echo "saliendo...";  
     }
 
 
+}
 }
 
 
