@@ -20,38 +20,35 @@ while (True){
     consultarSaldo($ingre);
     }
 
-    elseif($op==2){
-        function consignar ($ingre){
-            $nuevo= intval(readline("Ingrese el monto que desea consignar: "));
-            $sum=$ingre+$nuevo;
-            echo "Ha consignado $nuevo en su cuenta "."\n"."Su saldo total es de $sum"."\n";
-            return $nuevo;
-        }
-        consignar($ingre);
-    }
-
-    if($op==3){
-
-        function retirar($ingre,$reti){
-            $retiro=intval(readline("¿cuanto dinero desea retirar?: "));
-
-                if($retiro>$ingre){
-                    $reti=$retiro-$ingre;
-                    echo "Su retiro ha sido exitoso, su saldo es de $reti";
-            
+        if($op==2){
+            function consignar ($ingre){
+                $nuevo= intval(readline("Ingrese el monto que desea consignar: "));
+                $sum=$ingre+$nuevo;
+                echo "Ha consignado $nuevo en su cuenta "."\n"."Su saldo total es de $sum"."\n";
+                $ingre=$sum; // Aqui queria actualizar la variable pero no pude
+                return $nuevo;
             }
-            return $reti;
-            return $retiro;
-    }
-    retirar($ingre,$retiro);
+            consignar($ingre);
+        }
+            if($op==3){
 
-    if($op==4){
-        echo "saliendo...";  
-    }
+                function retirar($ingre){
+                    $retiro=intval(readline("¿cuanto dinero desea retirar?: "));
+                    $reti=$ingre-$retiro;
+                        if($retiro<$ingre){
+                            echo "Su retiro ha sido exitoso, su saldo es de $reti"."\n"." ";
+                        }
+                        else
+                        echo "saldo insuficiente, lo sentimos"."\n";
+            };
+            retirar($ingre);
+            }
 
-
+                if($op==4){
+                    echo "saliendo...";
+                    break;
+                }
+            
 }
-}
-
 
 ?>
